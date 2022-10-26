@@ -19,7 +19,8 @@ pipeline {
         }
           stage('Cleanup stage') {
             steps {
-                sh 'docker system prune -y '
+                sh 'docker system prune '
+                sh 'y'
             }
         }
           stage('Push stage') {
