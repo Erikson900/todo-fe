@@ -17,5 +17,16 @@ pipeline {
                 sh 'DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t erikost/todo-fe:latest --target delivery .'
             }
         }
+          stage('Cleanup stage') {
+            steps {
+                sh 'docker system prune '
+            }
+        }
+          stage('Push stage') {
+            steps {
+                sh 'docker push erikson900/todo-fe:latest '
+'
+            }
+        }
     }
 }
