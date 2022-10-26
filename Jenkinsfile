@@ -19,7 +19,7 @@ pipeline {
         }
           stage('Cleanup stage') {
             steps {
-                sh 'yes || docker system prune '
+                sh 'yes | docker system prune '
             }
         }
           stage('Push stage') {
