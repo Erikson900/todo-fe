@@ -4,22 +4,22 @@ pipeline {
     stages {
         stage('Build stage') {
             steps {
-              sh 'DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t erikost/todo-fe:latest --target builder .'
+              sh 'DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t erikson900/todo-fe:latest --target builder .'
             }
         }
         stage('Test stage') {
             steps {
-                 sh 'DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t erikost/todo-fe:latest --target test .'
+                 sh 'DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t erikson900/todo-fe:latest --target test .'
             }
         }
         stage('Delivery stage') {
             steps {
-                sh 'DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t erikost/todo-fe:latest --target delivery .'
+                sh 'DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t erikson900/todo-fe:latest --target delivery .'
             }
         }
           stage('Cleanup stage') {
             steps {
-                sh 'docker system prune '
+                sh 'docker system prune -y '
             }
         }
           stage('Push stage') {
