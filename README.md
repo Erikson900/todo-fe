@@ -10,10 +10,27 @@ Steps:
              steps {
                  sh '''
                     docker tag [image] [yourRepo/todo-fe]:jenkins-${BUILD_NUMBER}
-                    docker login -u ${username} -p ${pass}
+                    docker login -u ${username} -p ${password}
                     docker push [yourRepo/todo-fe] --all-tags
                    '''
             }
+      
+      or
+      -
+    
+    
+    	environment{
+        
+        	registry = "<dockerhub-username>/<repo-name>"
+        	registryCredential = '<dockerhub-credential-name>'        
+    		}
+        stage('PUSH STAGE') {
+    	  steps{
+     	    script {
+        	   docker.withRegistry( '', registryCredential ) {
+         	   dockerImage.push()
+          	}
+        }
       
       
  - if all went well, go to the second part of the project and do the same thing:
