@@ -3,7 +3,19 @@ Devops Seminar Final project
 Steps:
  - run the Docker-pipeline via Jenkins to make sure all stages are working properly.
           
-      - the push stage is absent from Jenkinsfile due to docker.io permission so has to be done manually.
+      - the push stage is absent from Jenkinsfile so has to be done manually or add the following:
+         
+         
+		 	stage('PUSH STAGE') {
+             steps {
+                 sh '''
+                    docker tag [image] [yourRepo/todo-fe]:jenkins-${BUILD_NUMBER}
+                    docker login -u ${username} -p ${pass}
+                    docker push [yourRepo/todo-fe] --all-tags
+                   '''
+            }
+      
+      
  - if all went well, go to the second part of the project and do the same thing:
 
 (the Dockerfile spec is inside the backend folder)
