@@ -22,10 +22,5 @@ pipeline {
                 sh 'yes | docker system prune '
             }
         }
-          stage('Push stage') {
-            steps {
-                sh 'docker push erikson900/todo-fe:latest '
-            }
-        }
     }
 }
