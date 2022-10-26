@@ -1,5 +1,5 @@
 #DOCKER Spec
-FROM node:14alpine
+FROM node:14-alpine
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY ./frontend/*.json /
