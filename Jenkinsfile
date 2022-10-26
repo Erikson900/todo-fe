@@ -22,13 +22,14 @@ pipeline {
                 sh 'yes | docker system prune '
             }
         }
-       stage('PUSH STAGE') {
+       stage('Push stage') {
           steps {
                sh '''
                 docker tag erikson900/todo-fe erikson900/todo-fe:jenkins-${BUILD_NUMBER}
                 docker login -u ${username} -p ${password}
                 docker push erikson900/todo-fe --all-tags
                 '''
-        }
-    }
+         }
+      }
+   }
 }
