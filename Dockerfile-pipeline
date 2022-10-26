@@ -1,5 +1,5 @@
 #BUild
-FROM node:14alpine as builder
+FROM node:14-alpine as builder
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY ./frontend/*.json /app
@@ -7,7 +7,7 @@ RUN npm install
 
 
 #TEST
-FROM node:14alpine as test
+FROM node:14-alpine as test
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY --from=builder /app/node_modules/ /app/node_modules/
